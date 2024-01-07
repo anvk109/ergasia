@@ -87,7 +87,7 @@ def adjust_verb(verb, lexicon):
     match = re_endings_to_replace.search(verb)
     if match:
         ending = match.group()
-        return replace_ending(verb, ending, ['ώ', 'άω', 'θαίνω'], lexicon) or verb
+        return replace_ending(verb, ending, ['ώ', 'άω', 'αίνω', 'χαίνω', 'θαίνω'], lexicon) or verb
     
     if any(verb.endswith(suffix) for suffix in suffixes):
         # Replace the suffix to form the correct verb form
@@ -95,7 +95,7 @@ def adjust_verb(verb, lexicon):
             if verb.endswith(suffix):
                 verb_without_suffix = verb[:-len(suffix)]
                 
-                for replacement in ['νω', 'χω', 'φω', 'ζω', 'ω', 'βω', 'χνω', 'αίνω', 'χαίνω', 'νομαι']:
+                for replacement in ['νω', 'χω', 'φω', 'ζω', 'ω', 'βω', 'χνω', 'νομαι']:
                     new_verb = verb_without_suffix + replacement
                     if new_verb in lexicon:
                         return new_verb
